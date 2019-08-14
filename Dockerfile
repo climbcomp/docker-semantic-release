@@ -12,4 +12,9 @@ RUN npm install -g \
   && \
   npm cache clean --force
 
+RUN mkdir -p ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+RUN mkdir -p /app
+WORKDIR /app
+
 CMD ["semantic-release", "--help"]
